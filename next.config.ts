@@ -1,7 +1,7 @@
-import type { NextConfig } from "@/app/node_modules/next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig = {
+  images: {
+    domains: ["ecommerce.routemisr.com"],
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
