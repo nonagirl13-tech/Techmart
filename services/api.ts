@@ -22,7 +22,7 @@ class ApiServices {
 
   async getProductDetails(productId: string): Promise<Product> {
     const response = await fetch(
-      `${this.#BASE_URL}/api/v1/products/${productId}`
+      `https://ecommerce.routemisr.com/api/v1/products/${productId}`
     );
     const { data: product } = await response.json();
     return product;
@@ -31,7 +31,7 @@ class ApiServices {
   async addProductToCart(
     productId: string
   ): Promise<addToCartResponse> {
-    const response = await fetch(`${this.#BASE_URL}/api/v2/cart`, {
+    const response = await fetch(`https://ecommerce.routemisr.com/api/v2/cart`, {
       method: "POST",
       headers: this.#headers,
       body: JSON.stringify({ productId }),
@@ -42,7 +42,7 @@ class ApiServices {
   }
 
   async getCart() {
-    const response = await fetch(`${this.#BASE_URL}/api/v2/cart`, {
+    const response = await fetch(`https://ecommerce.routemisr.com/api/v2/cart`, {
       headers: this.#headers,
     });
 
@@ -52,7 +52,7 @@ class ApiServices {
 
   async removeProductFromCart(productId: string) {
     const response = await fetch(
-      `${this.#BASE_URL}/api/v2/cart/${productId}`,
+      `https://ecommerce.routemisr.com/api/v2/cart/${productId}`,
       {
         method: "DELETE",
         headers: this.#headers,
@@ -64,7 +64,7 @@ class ApiServices {
   }
 
   async clearCart(): Promise<string> {
-    const response = await fetch(`${this.#BASE_URL}/api/v2/cart`, {
+    const response = await fetch(`https://ecommerce.routemisr.com/api/v2/cart`, {
       method: "DELETE",
       headers: this.#headers,
     });
@@ -78,7 +78,7 @@ class ApiServices {
     count: number
   ): Promise<addToCartResponse> {
     const response = await fetch(
-      `${this.#BASE_URL}/api/v2/cart/${productId}`,
+      `https://ecommerce.routemisr.com/api/v2/cart/${productId}`,
       {
         method: "PUT",
         headers: this.#headers,
@@ -95,7 +95,7 @@ async createOrder(shippingAddress: {
   city: string;
 }) {
   
-  const response = await fetch(`${this.#BASE_URL}/api/v2/orders`, {
+  const response = await fetch(`https://ecommerce.routemisr.com/api/v2/orders`, {
     method: "POST",
     headers: this.#headers,
     body: JSON.stringify({
@@ -108,13 +108,13 @@ async createOrder(shippingAddress: {
 }
 
 async getCategories() {
-  const res = await fetch(`${this.#BASE_URL}/api/v1/categories`);
+  const res = await fetch(`https://ecommerce.routemisr.com/api/v1/categories`);
   const data = await res.json();
   return data.data;
 }
 
 async getBrands() {
-  const res = await fetch(`${this.#BASE_URL}/api/v1/brands`);
+  const res = await fetch(`https://ecommerce.routemisr.com/api/v1/brands`);
   const data = await res.json();
   return data.data;
 }
